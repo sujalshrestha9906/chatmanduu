@@ -1,0 +1,82 @@
+{
+  "project_info": {
+    "project_number": "968313729320",
+    "project_id": "chatmandu-1739b",
+    "storage_bucket": "chatmandu-1739b.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:968313729320:android:527f943a56f841c8b7e01d",
+        "android_client_info": {
+          "package_name": "com.example.chatmanduu"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "968313729320-brr4svndl7bmssnu44chsq4j3mi0m8d6.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAt2PRR10pKCGxbx_wvE9-mC8QS2kqXGFY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "968313729320-brr4svndl7bmssnu44chsq4j3mi0m8d6.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "968313729320-ru2tnrl8oa000qaifkladcgd3eebv7lf.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.chatmanduu"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:968313729320:android:db0d2efdc0bc4413b7e01d",
+        "android_client_info": {
+          "package_name": "com.example.flutterpod"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "968313729320-brr4svndl7bmssnu44chsq4j3mi0m8d6.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAt2PRR10pKCGxbx_wvE9-mC8QS2kqXGFY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "968313729320-brr4svndl7bmssnu44chsq4j3mi0m8d6.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "968313729320-ru2tnrl8oa000qaifkladcgd3eebv7lf.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.chatmanduu"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
