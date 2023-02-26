@@ -1,25 +1,52 @@
 import 'dart:io';
 import 'package:chatmandu/constants/firebase_instances.dart';
+import 'package:chatmandu/model/post.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import 'package:get/get.dart';
-
 import '../common_widgets/snack_show.dart';
-import '../providers/auth_provider.dart';
+
 import '../providers/common_provider.dart';
 import '../providers/post_provider.dart';
 
-class CreatePage extends ConsumerWidget {
-  final titleController = TextEditingController();
-  final detailController = TextEditingController();
+class User {
+  String mnio = 'li';
+  void method() {
+    mnio = 'lio';
+  }
+}
+
+m() {
+  User()..mnio = 'like';
+}
+
+class UpdatePage extends ConsumerStatefulWidget {
+  final Post postData;
+  UpdatePage(this.postData);
+
+  @override
+  ConsumerState<UpdatePage> createState() => _UpdatePageState();
+}
+
+class _UpdatePageState extends ConsumerState<UpdatePage> {
+  TextEditingController titleController = TextEditingController();
+  TextEditingController detailController = TextEditingController();
 
   final _form = GlobalKey<FormState>();
 
   final uid = FirebaseInstances.fireChat.firebaseUser!.uid;
+
   @override
-  Widget build(BuildContext context, ref) {
+  void initState() {
+    titleController..text = widget.postData.title;
+    detailController..text = widget.postData.detail;
+    super.initState();
+  }
+
+  @override
+  Widget build(BuildContext context) {
     ref.listen(postProvider, (previous, next) {
       if (next.isError) {
         SnackShow.showFailure(context, next.errMessage);
@@ -117,7 +144,7 @@ class CreatePage extends ConsumerWidget {
                       decoration: BoxDecoration(
                           border: Border.all(color: Colors.white)),
                       child: image == null
-                          ? Center(child: Text('please select an image'))
+                          ? Image.network(widget.postData.imageUrl)
                           : Image.file(File(image.path)),
                     ),
                   ),
@@ -132,14 +159,17 @@ class CreatePage extends ConsumerWidget {
                               FocusScope.of(context).unfocus();
                               if (_form.currentState!.validate()) {
                                 if (image == null) {
-                                  SnackShow.showFailure(
-                                      context, 'please select an image');
-                                } else {
-                                  ref.read(postProvider.notifier).postAdd(
+                                  ref.read(postProvider.notifier).postUpdate(
                                       title: titleController.text.trim(),
                                       detail: detailController.text.trim(),
-                                      userId: uid,
-                                      image: image);
+                                      postId: widget.postData.postId);
+                                } else {
+                                  ref.read(postProvider.notifier).postUpdate(
+                                      title: titleController.text.trim(),
+                                      detail: detailController.text.trim(),
+                                      postId: widget.postData.postId,
+                                      image: image,
+                                      imageId: widget.postData.imageId);
                                 }
                               } else {
                                 ref.read(mode.notifier).toggle();

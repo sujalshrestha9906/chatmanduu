@@ -2,6 +2,7 @@ import 'package:chatmandu/constants/firebase_instances.dart';
 import 'package:chatmandu/model/common_state.dart';
 import 'package:chatmandu/services/auth_service.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+
 import 'package:image_picker/image_picker.dart';
 
 final authStream =
