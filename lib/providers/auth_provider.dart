@@ -5,8 +5,8 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import 'package:image_picker/image_picker.dart';
 
-final authStream =
-    StreamProvider((ref) => FirebaseInstances.firebaseAuth.authStateChanges());
+final authStream = StreamProvider.autoDispose(
+    (ref) => FirebaseInstances.firebaseAuth.authStateChanges());
 
 final authProvider = StateNotifierProvider<AuthProvider, CommonState>((ref) =>
     AuthProvider(CommonState(

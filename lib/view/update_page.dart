@@ -11,17 +11,6 @@ import '../common_widgets/snack_show.dart';
 import '../providers/common_provider.dart';
 import '../providers/post_provider.dart';
 
-class User {
-  String mnio = 'li';
-  void method() {
-    mnio = 'lio';
-  }
-}
-
-m() {
-  User()..mnio = 'like';
-}
-
 class UpdatePage extends ConsumerStatefulWidget {
   final Post postData;
   UpdatePage(this.postData);

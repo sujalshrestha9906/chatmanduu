@@ -10,7 +10,8 @@ import 'package:flutter_chat_types/flutter_chat_types.dart' as types;
 
 final userStream = StreamProvider.autoDispose
     .family((ref, String userId) => AuthService.getUserById(userId));
-final usersStream = StreamProvider((ref) => FirebaseInstances.fireChat.users());
+final usersStream =
+    StreamProvider.autoDispose((ref) => FirebaseInstances.fireChat.users());
 
 class AuthService {
   static CollectionReference userDb =
@@ -68,6 +69,10 @@ class AuthService {
     try {
       final credential = await FirebaseInstances.firebaseAuth
           .signInWithEmailAndPassword(email: email, password: password);
+      final token = await FirebaseInstances.fireMessage.getToken();
+      await userDb.doc(credential.user!.uid).update({
+        'metadata': {'email': email, 'token': token}
+      });
       return Right(true);
     } on FirebaseAuthException catch (err) {
       return Left('${err.message}');
